@@ -95,12 +95,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 ketQua = luuso1 + "";
                 break;
             case "/":
-                if (luuso2 == 0)
-                    ketQua = "Không thực hiên được";
-                else {
-                    luuso1 = luuso1 / luuso2;
-                    ketQua = luuso1 + "";
-                }
+//                if (luuso2 == 0) {
+//                    ketQua = "Không thực hiên được";
+//                    luuso1 = luuso2 = 0;
+//                    pheptinh1 = pheptinh2 = "";
+//                    trangthai = false;
+//                }
+//                else {
+                luuso1 = luuso1 / luuso2;
+                ketQua = luuso1 + "";
+//                }
                 break;
         }
         return luuso1;
@@ -384,7 +388,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
         if (id == R.id.btn_dauchia) {
             pheptinh2 = "/";
-            if (trangthai == false) {
+            if (temp == "0") {
+                ketQua = "Không thực hiên được";
+                luuso1 = luuso2 = 0;
+                pheptinh1 = pheptinh2 = "";
+                trangthai = false;
+            } else if (trangthai == false) {
                 hienThi = luuso1 + "";
                 ketQua = luuso1 + "";
                 trangthai = true;
@@ -469,6 +478,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             if (trangthai == false) {
                 hienThi = "";
                 ketQua = "";
+                luuso1 = luuso2 = 0;
+                pheptinh1 = pheptinh2 = "";
             } else if (temp != "") {
                 hienThi = hienThi.substring(0, hienThi.length() - temp.length());
                 temp = "";
@@ -478,6 +489,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             } else if (temp == "" && pheptinh1 == "") {
                 hienThi = "";
                 ketQua = "";
+                luuso1 = luuso2 = 0;
+                trangthai = false;
+                pheptinh1 = pheptinh2 = "";
             }
             txthienthi.setText(hienThi);
             txtketqua.setText(ketQua);
